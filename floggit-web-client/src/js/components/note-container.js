@@ -7,42 +7,40 @@ import NoteEdit from './note-edit';
 import NoteError from './note-error';
 import NoteList from './note-list';
 
-const NoteContainer = (props) => {
-  console.log(props.params);
-  return (
-    <div className="note-container">
-      <NoteAdd
-        isVisible={props.displayAdd}
-        onClick={props.handleAdd}
-      />
-      <NoteError
-        isVisible={props.displayError}
-        errorText={props.errorText}
-        onHideError={props.handleHideError}
-      />
-      <NoteInput
-        onAdd={props.handleSave}
-        isVisible={!props.displayAdd}
-        note={props.editNote}
-        whiteboard={props.params.whiteboard}
-        onClick={props.handleCancel}
-      />
-      <NoteEdit
-        onAdd={props.handleSaveEdit}
-        isVisible={!props.displayAdd}
-        note={props.editNote}
-        onClick={props.handleCancel}
-        onRemove={props.handleRemove}
-      />
-      <NoteList
-        isVisible={props.displayAdd}
-        notes={props.notes}
-        whiteboard={props.params.whiteboard}
-        onEdit={props.handleEdit}
-        onRemove={props.handleRemove}
-      />
-    </div>
-); };
+const NoteContainer = props => (
+  <div className="note-container">
+    <NoteAdd
+      isVisible={props.displayAdd}
+      onClick={props.handleAdd}
+    />
+    <NoteError
+      isVisible={props.displayError}
+      errorText={props.errorText}
+      onHideError={props.handleHideError}
+    />
+    <NoteInput
+      onAdd={props.handleSave}
+      isVisible={!props.displayAdd}
+      note={props.editNote}
+      whiteboard={props.params.whiteboard}
+      onClick={props.handleCancel}
+    />
+    <NoteEdit
+      onAdd={props.handleSaveEdit}
+      isVisible={!props.displayAdd}
+      note={props.editNote}
+      onClick={props.handleCancel}
+      onRemove={props.handleRemove}
+    />
+    <NoteList
+      isVisible={props.displayAdd}
+      notes={props.notes}
+      whiteboard={props.params.whiteboard}
+      onEdit={props.handleEdit}
+      onRemove={props.handleRemove}
+    />
+  </div>
+);
 
 NoteContainer.propTypes = () => ({
   displayAdd: React.PropTypes.bool,
@@ -76,7 +74,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setAdd());
   },
   handleSave: (title, description, color, noteWhiteboard) => {
-    const note = { title, description, color, date: (new Date().toDateString()), noteWhiteboard };
+    const note = { title, description, color, noteWhiteboard };
     dispatch(saveNote(note));
   },
   handleEdit: (id) => {
@@ -84,7 +82,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(clearAdd());
   },
   handleSaveEdit: (id, title, description, color, noteWhiteboard) => {
-    const note = { title, description, color, date: (new Date().toDateString()), noteWhiteboard };
+    const note = { title, description, color, noteWhiteboard };
     dispatch(updateNote(id, note));
   },
   handleRemove: (id) => {

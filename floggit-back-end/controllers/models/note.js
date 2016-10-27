@@ -9,6 +9,10 @@ function generateId() {
   return +(new Date());
 }
 
+function generateDate() {
+  return (new Date().toDateString());
+}
+
 function update() {
   localStorage.setItem('itemsRepo', JSON.stringify(items));
   eventEmitter.emit('updated', items);
@@ -20,7 +24,6 @@ module.exports.getAll = function() {
 
 module.exports.add = function(id, item) {
   var uniqueID;
-console.log(id.title);
   if(!item){
     item = id;
     uniqueID = generateId();
@@ -30,6 +33,7 @@ console.log(id.title);
 
   items.push({
     id: uniqueID,
+    date: generateDate(),
     item: item
   });
   update();

@@ -10,11 +10,8 @@ const NoteInput = (props) => {
     const noteDescription = description.value.trim();
     const noteColor = color.value;
     const noteWhiteboard = props.whiteboard;
-    console.log(props);
 
-    // if (noteTitle.length > 0) {
     props.onAdd(noteTitle, noteDescription, noteColor, noteWhiteboard);
-    // }
   }
 
   function handleCancel() {

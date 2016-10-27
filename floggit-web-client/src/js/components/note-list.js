@@ -8,8 +8,6 @@ const NoteItem = (props) => {
   function handleEdit() {
     props.onEdit(props.id);
   }
-  console.log(props.noteWhiteboard);
-  console.log(props);
 
   if (props.isVisible && props.noteWhiteboard === props.whiteboard) {
     let classNameColor = 'panel-body note ';

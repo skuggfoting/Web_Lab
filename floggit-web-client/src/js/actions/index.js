@@ -120,10 +120,10 @@ export const startNoteSocket = () => (dispatch) => {
   socket.on('note-update', (data) => {
     const notes = data.map(item => ({
       id: item.id,
+      date: item.date,
       title: item.item.title,
       description: item.item.description,
       color: item.item.color,
-      date: item.item.date,
       noteWhiteboard: item.item.noteWhiteboard
     }));
     dispatch(updateAllNotes(notes));

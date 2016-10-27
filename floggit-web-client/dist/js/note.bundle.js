@@ -37380,10 +37380,10 @@ var startNoteSocket = exports.startNoteSocket = function startNoteSocket() {
       var notes = data.map(function (item) {
         return {
           id: item.id,
+          date: item.date,
           title: item.item.title,
           description: item.item.description,
           color: item.item.color,
-          date: item.item.date,
           noteWhiteboard: item.item.noteWhiteboard
         };
       });
@@ -37590,7 +37590,6 @@ var _noteList2 = _interopRequireDefault(_noteList);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var NoteContainer = function NoteContainer(props) {
-  console.log(props.params);
   return _react2.default.createElement(
     'div',
     { className: 'note-container' },
@@ -37668,7 +37667,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       dispatch((0, _actions.setAdd)());
     },
     handleSave: function handleSave(title, description, color, noteWhiteboard) {
-      var note = { title: title, description: description, color: color, date: new Date().toDateString(), noteWhiteboard: noteWhiteboard };
+      var note = { title: title, description: description, color: color, noteWhiteboard: noteWhiteboard };
       dispatch((0, _actions.saveNote)(note));
     },
     handleEdit: function handleEdit(id) {
@@ -37676,7 +37675,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       dispatch((0, _actions.clearAdd)());
     },
     handleSaveEdit: function handleSaveEdit(id, title, description, color, noteWhiteboard) {
-      var note = { title: title, description: description, color: color, date: new Date().toDateString(), noteWhiteboard: noteWhiteboard };
+      var note = { title: title, description: description, color: color, noteWhiteboard: noteWhiteboard };
       dispatch((0, _actions.updateNote)(id, note));
     },
     handleRemove: function handleRemove(id) {
@@ -37954,11 +37953,8 @@ var NoteInput = function NoteInput(props) {
     var noteDescription = description.value.trim();
     var noteColor = color.value;
     var noteWhiteboard = props.whiteboard;
-    console.log(props);
 
-    // if (noteTitle.length > 0) {
     props.onAdd(noteTitle, noteDescription, noteColor, noteWhiteboard);
-    // }
   }
 
   function handleCancel() {
@@ -38142,8 +38138,6 @@ var NoteItem = function NoteItem(props) {
   function handleEdit() {
     props.onEdit(props.id);
   }
-  console.log(props.noteWhiteboard);
-  console.log(props);
 
   if (props.isVisible && props.noteWhiteboard === props.whiteboard) {
     var classNameColor = 'panel-body note ';
