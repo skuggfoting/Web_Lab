@@ -12,7 +12,6 @@ const WhiteboardItem = (props) => {
 
   if (props.isVisible) {
     let classNameColor = 'panel-body note ';
-    console.log(props);
     classNameColor += props.color;
     return (
       <div className={classNameColor}>

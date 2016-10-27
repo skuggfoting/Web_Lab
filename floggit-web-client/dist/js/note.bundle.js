@@ -37448,8 +37448,6 @@ var startWhiteboardSocket = exports.startWhiteboardSocket = function startWhiteb
   return function (dispatch) {
     var socket = (0, _socket2.default)('http://localhost:8081');
     socket.on('whiteboard-update', function (data) {
-      console.log('whiteboard');
-      console.log(data);
       var whiteboards = data.map(function (item) {
         return {
           id: item.id,
@@ -38833,7 +38831,6 @@ var WhiteboardItem = function WhiteboardItem(props) {
 
   if (props.isVisible) {
     var classNameColor = 'panel-body note ';
-    console.log(props);
     classNameColor += props.color;
     return _react2.default.createElement(
       'div',
